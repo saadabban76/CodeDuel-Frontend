@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import './globals.css'
 import Logos from "@/components/Logos";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -28,8 +29,8 @@ export default function Home() {
                 height="0"
                 sizes="100vw"
                 className="w-full h-full"
-                // className='xl:w-[900px] shadow-xl shadow-[#2A2A2A] 
-                // rounded-md'
+              // className='xl:w-[900px] shadow-xl shadow-[#2A2A2A] 
+              // rounded-md'
               />
             </div>
             {/* right section */}
@@ -38,7 +39,11 @@ export default function Home() {
               <h1 className='text-white  w-[370px] xl:w-[700px] flex flex-col font-extrabold lg:text-[2.6rem] max-lg:w-full max-lg:text-center text-[2rem]'>A New Way to
                 <span className=''>Solve Challenges and win rewards</span> </h1>
               <p className='text-foreground text-gray-300 max-lg:text-center max-lg:w-full w-[70%]'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, magnam inventore rerum nam id beatae!</p>
-              <Button className='px-8 py-4 mt-10'>Enter App !</Button>
+              <Button className='px-8 py-4 mt-10'>
+                <Link href='/problems' >
+                  Enter App !
+                </Link>
+              </Button>
             </section>
           </div>
         </section>
@@ -47,7 +52,7 @@ export default function Home() {
         <BannerGrids />
         {/* faq */}
         <Faq />
-        <Footer/>
+        <Footer />
       </div>
     </main>
   );

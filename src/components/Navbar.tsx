@@ -19,12 +19,13 @@ const Navbar = () => {
                 {/* Logo */}
                 <div className='w-full h-full'>
                     <Image
+                        onClick={()=> router.push('/')}
                         src='/assets/logo.png'
                         alt='Code Duel'
                         layout="intrinsic"
                         width="100"
                         height="100"
-                        className='w-[180px] h-[100%]'
+                        className='w-[180px] h-[100%] cursor-pointer'
                     />
                 </div>
                 {/* right side */}
