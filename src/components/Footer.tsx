@@ -1,9 +1,10 @@
+import { cn } from '@/lib/utils'
 import Link from 'next/link'
 import React from 'react'
 
-const Footer = () => {
+const Footer = ({className}: {className?: string}) => {
   return (
-      <div className='w-full p-4 px-4 text-gray-400 bg-black/90'>
+      <div className={cn('w-full p-4 px-4 text-gray-400 bg-black/90', className)}>
           <div className='py-2 flex justify-between items-center'>
               {/* copyright */}
               <h2>Copyright &copy; 2024 Code Duel</h2>

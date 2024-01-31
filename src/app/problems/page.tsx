@@ -7,6 +7,8 @@ import { useRouter } from 'next/navigation';
 import MaxWidthWrapper from '@/components/MaxWidthWrapper';
 import Link from 'next/link';
 import ProblemsContainer from './ProblemsContainer';
+import Footer from '@/components/Footer';
+import { cn } from '@/lib/utils';
 
 const Navbar = () => {
     const userId = '23423';
@@ -76,6 +78,7 @@ const Navbar = () => {
                 </MaxWidthWrapper >
             </nav>
             <ProblemsContainer />
+            <Footer className={cn('absolute bottom-0')} />
         </main>
 
     )

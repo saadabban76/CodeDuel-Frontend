@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import Problem from './Problem';
 import MaxWidthWrapper from '@/components/MaxWidthWrapper';
-import { Table, TableBody, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { Table, TableBody, TableFooter, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { cn } from '@/lib/utils';
 
 const ProblemsContainer = () => {
@@ -68,9 +68,9 @@ const ProblemsContainer = () => {
     console.log('active INdex : ', activeIndex);
 
     return (
-        <main className='p-2'>
+        <main className='p-2 mt-[100px]'>
             <MaxWidthWrapper>
-                <Table className='text-white px-4 py-16 w-full'>
+                <Table className='text-white max-w-[900px] mr-auto px-4 py-16 w-full'>
                     <TableHeader>
                         <TableRow className='text-white text-left'>
                             <TableHead>Id</TableHead>
@@ -103,11 +103,7 @@ const ProblemsContainer = () => {
                                             isAnyOpen={isAnyOpen}
                                             handleOpen={handleOpen}
                                         />
-                                        <TableRow className={"flex absolute"}>
-                                            sdfsdfasdasdffffffffffffff
-                                        </TableRow>
                                     </>
-
                                 );
                             })}
                     </TableBody>
