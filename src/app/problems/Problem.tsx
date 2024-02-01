@@ -3,6 +3,7 @@ import { TableCell, TableRow } from '@/components/ui/table';
 import { cn } from '@/lib/utils';
 import { ChevronDown } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import React from 'react';
 
 type Prop = {
@@ -15,13 +16,26 @@ type Prop = {
     description: string,
 }
 
+
+
 const Problem = ({ id, title, fees, description, isOpen, handleOpen }: Prop) => {
+    const router = useRouter();
+
+    const clickHandler = (e: any, id: number) => {
+        e.preventDefault();
+        router.push(`/problems/${id}`)
+    }
+
     const isEven = id % 2 === 0;
     return (
         <>
-            <TableRow className={cn('  text-white h-16 relative border-none', { 'border-none': isOpen, 'bg-white/10': isEven })}>
+            <TableRow
+                className={cn('text-white h-16 relative border-none', { 'border-none': isOpen, 'bg-white/10': isEven })}>
                 <TableCell className=''>{id}</TableCell>
-                <TableCell>{title}</TableCell>
+                <TableCell
+                    onClick={(e) => clickHandler(e, id)}
+                    className='cursor-pointer hover:text-second'
+                >{title}</TableCell>
                 <TableCell>{fees}</TableCell>
                 <TableCell className=''>
                     <Link className={buttonVariants({

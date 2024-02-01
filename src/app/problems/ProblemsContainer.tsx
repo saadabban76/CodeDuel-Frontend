@@ -70,9 +70,9 @@ const ProblemsContainer = () => {
     return (
         <main className='p-2 mt-[100px]'>
             <MaxWidthWrapper>
-                <Table className='text-white max-w-[900px] mr-auto px-4 py-16 w-full'>
+                <Table className='text-white max-w-[1000px] mx-auto px-4 py-16 w-full'>
                     <TableHeader>
-                        <TableRow className='text-white text-left'>
+                        <TableRow className='text-white border-gray-500 text-left'>
                             <TableHead>Id</TableHead>
                             <TableHead>Title</TableHead>
                             <TableHead>Fees</TableHead>
