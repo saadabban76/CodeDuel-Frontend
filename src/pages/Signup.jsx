@@ -42,7 +42,7 @@ const Signup = () => {
         );
 
         setTimeout(() => {
-          navigate.push("/");
+          navigate("/");
         }, 1000);
       }
     } catch (error) {
