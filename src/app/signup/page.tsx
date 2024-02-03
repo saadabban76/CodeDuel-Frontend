@@ -7,27 +7,47 @@ import { Toaster, toast } from 'sonner';
 import Image from 'next/image';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
+import { userStore } from '@/store/user';
 
 const Page = () => {
   const router = useRouter();
   const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+
+  const updateUser = userStore((state: any) => state.updateUser);
+  const user = userStore((state: any) => state.user);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    try {
-      const response = await axios.post('/api/auth/login', {
-        email,
-        password,
-      });
+    const formData = new URLSearchParams();
+    formData.append('email', email);
+    formData.append('username', username);
+    formData.append('password', password);
 
-      if (response.status === 200) {
+    try {
+      const response = await axios.post('http://localhost:8000/api/add_user', formData, {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      });
+      console.log('Response:', response.data);
+
+      if ('Err' in response.data) {
+        toast.error(`User with this Email/Username id already exists !`);
+      }
+      else {
         toast.success('Login successful');
-        router.push('/dashboard');
+        localStorage.setItem('user', JSON.stringify({ user: response.data.Ok }));
+
+        setTimeout(() => {
+          router.push('/');          
+        }, 1000);
       }
     } catch (error) {
+      console.log('errro : ', error);
       toast.error('Login failed');
     }
   };
@@ -59,6 +79,19 @@ const Page = () => {
                 required
               />
             </div>
+            <div className="mb-6">
+              <label htmlFor="username" className="block text-white font-bold mb-2">
+                UserName
+              </label>
+              <input
+                type="text"
+                id="username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                className="bg-white/10 w-full border-gray-300 rounded-md p-2 focus:outline-none focus:border-blue-500"
+                required
+              />
+            </div>
             <div className="mb-10">
               <label htmlFor="password" className="block text-white font-bold mb-2">
                 Password
@@ -72,7 +105,7 @@ const Page = () => {
                 required
               />
             </div>
-            <div className="mb-10">
+            {/* <div className="mb-10">
               <label htmlFor="confirmPassword" className="block text-white font-bold mb-2">
                 Confirm Password
               </label>
@@ -84,7 +117,7 @@ const Page = () => {
                 className="bg-white/10 w-full border-gray-300 rounded-md p-2 focus:outline-none focus:border-blue-500"
                 required
               />
-            </div>
+            </div> */}
             <div className="flex items-center justify-between">
               <button
                 type="submit"

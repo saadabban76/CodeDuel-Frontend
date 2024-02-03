@@ -7,6 +7,7 @@ import { Toaster, toast } from 'sonner';
 import Image from 'next/image';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
+import { ConnectWallet } from '@thirdweb-dev/react';
 
 const Page = () => {
   const router = useRouter();
@@ -43,8 +44,8 @@ const Page = () => {
           />
         </nav>
         <div className="w-full max-w-md border border-gray-800 rounded-md p-10">
-          <form onSubmit={handleSubmit} className="text-[#FACC15] shadow-md rounded-md p-8">
-            <h2 className="text-2xl font-bold mb-6 text-[#FACC15] text-center">Login</h2>
+          <form onSubmit={handleSubmit} className="text-primary shadow-md rounded-md p-8">
+            <h2 className="text-2xl font-bold mb-6 text-primary text-center">Login</h2>
             <div className="mb-6">
               <label htmlFor="email" className="block text-white font-bold mb-2">
                 Username or Email
@@ -78,15 +79,20 @@ const Page = () => {
               >
                 Sign In
               </button>
-              <a href="/auth/forgot-password" className="text-[#FACC15] hover:underline">
+              <a href="/auth/forgot-password" className="text-primary hover:underline">
                 Forgot Password?
               </a>
             </div>
           </form>
+
+          <h1 className='text-primary text-xl font-semibold text-center'>or</h1>
+
+          <ConnectWallet />
+
           <div className="mt-6 text-center">
             <p className="text-gray-600">
               Don&apos;t have an account?{' '}
-              <Link href="/signup" className="text-[#FACC15] hover:underline">
+              <Link href="/signup" className="text-primary hover:underline">
                 Sign Up
               </Link>
             </p>
