@@ -1,8 +1,8 @@
 import Footer from "@/components/Footer";
-import { ConnectWallet } from "@thirdweb-dev/react";
+import { ConnectWallet, useAddress } from "@thirdweb-dev/react";
 import axios from "axios";
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Toaster, toast } from "sonner";
 
 const Signup = () => {
@@ -11,6 +11,7 @@ const Signup = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const address = useAddress();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -50,6 +51,9 @@ const Signup = () => {
       toast.error("Login failed");
     }
   };
+
+  if (address) 
+    <Navigate to='/' />
 
   return (
     <main className="flex flex-col justify-between min-h-screen">

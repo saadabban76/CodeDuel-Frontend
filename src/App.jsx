@@ -9,6 +9,9 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Problems from "./pages/Problems.";
 import './index.css';
+import AddQuestionBox from "./components/problems/AddQuestionBox";
+import AccountSettings from "./pages/AccountSettings";
+import AddQuestion from "./pages/AddQuestion";
 
 function App() {
 
@@ -20,6 +23,8 @@ function App() {
           <Route path="problems/:pid" element={<ProblemDesc />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/accountsettings" element={<AccountSettings />} />
+          <Route path="/addquestion" element={<AddQuestion />} />
           <Route path="/problems" element={<Problems />}></Route>
           {/* <Route path="*" element={<NoPage />} /> */}
         </Routes>

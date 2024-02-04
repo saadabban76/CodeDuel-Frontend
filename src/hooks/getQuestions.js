@@ -8,14 +8,10 @@ export const useGetQuestions = async () => {
   const questionsHandler = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8000/api/get_question",
+        `http://localhost:8000/api/get_question/0/${encodeURIComponent(
+          " "
+        )}/0/${encodeURIComponent(" ")}`,
         {
-          params: {
-            question_id: 0,
-            question_title: "",
-            rival_id: 0,
-            question_category: "All"
-          },
           headers: {
             "Content-Type": "application/x-www-form-urlencoded"
           }
@@ -26,7 +22,7 @@ export const useGetQuestions = async () => {
       setQuestions(response.data);
 
       if ("Err" in response.data) {
-        toast.error(`Error while fetching questions server !`);
+        toast.error(`Error while fetching questions !`);
       } else {
         toast.success("questions fetched succesfully !");
       }

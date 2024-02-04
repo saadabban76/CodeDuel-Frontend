@@ -11,6 +11,7 @@ const AddQuestionBox = () => {
           challenge others ?{" "}
         </h1>
         <Link
+          to='/addQuestion'
           className={buttonVariants({
             className: "w-full px-4 py-1 xl:text-lg text-black"
           })}

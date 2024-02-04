@@ -13,20 +13,24 @@ const Problems = () => {
   const address = useAddress();
   const navigate = useNavigate();
 
-  if (!address) {
-    toast.error("please login to access this page !");
-    return navigate("/");
+  console.log("address : ", address);
+
+  if (!address || address === undefined) {
+    // window.location.reload();
+    toast("please login to access this page !");
+
+    navigate("/", { replace: true });
   }
 
   return (
     <main className="w-full pb-4 dark relative bg-gradient-to-br from-[#0F1522] to-background min-h-screen">
-      <Toaster />
       <Nav />
       <MaxWidthWrapper className="flex justify-between gap-10 max-lg:flex-col items-start py-16">
         <ProblemsContainer />
         <AddQuestionBox />
       </MaxWidthWrapper>
       <Footer className={cn("absolute bottom-0")} />
+      <Toaster />
     </main>
   );
 };
