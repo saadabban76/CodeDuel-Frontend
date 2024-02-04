@@ -2,10 +2,16 @@ import React, { useState } from "react";
 import axios from "axios";
 import Nav from "@/components/problems/Nav";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger
+} from "@/components/ui/tooltip";
 
 const AddQuestion = () => {
   const [formData, setFormData] = useState({
-    rival_id: 0,
+    rival_id: 31,
     question_title: "",
     question_body: "",
     deadline: "",
@@ -17,7 +23,8 @@ const AddQuestion = () => {
     executable_solution: "",
     solution_executer: "",
     test_inputs: "",
-    test_outputs: ""
+    test_outputs: "",
+    status: 1
   });
 
   const handleChange = (e) => {
@@ -28,7 +35,7 @@ const AddQuestion = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8000/api/add_user", formData, {
+      await axios.post("http://localhost:8000/api/add_question", formData, {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded"
         }
@@ -94,6 +101,16 @@ const AddQuestion = () => {
             <div className="mb-4">
               <label htmlFor="deadline" className="block text-gray-200">
                 Deadline to solve the question
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <span className="text-second"> (See Example)</span>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>{`"2015-09-05 23:56:04"`}</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
               </label>
               <input
                 type="text"
@@ -154,6 +171,23 @@ const AddQuestion = () => {
                 className="block text-gray-200"
               >
                 Executable Solution
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <span className="text-second"> (See Example)</span>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>
+                        {`mod executable;
+                        use executable::hello;
+                        fn main(){
+                            hello();
+                            println!("true")
+                        }`}
+                      </p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
               </label>
               <input
                 type="text"
@@ -171,6 +205,20 @@ const AddQuestion = () => {
                 className="block text-gray-200"
               >
                 Solution Executor
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <span className="text-second"> (See Example)</span>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>
+                        {`pub fn hello () {
+                            println!("hello from postman")
+                        }`}
+                      </p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
               </label>
               <input
                 type="text"

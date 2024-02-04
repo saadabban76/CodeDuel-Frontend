@@ -6,8 +6,16 @@ import { vscodeDark } from '@uiw/codemirror-theme-vscode'
 import { javascript } from '@codemirror/lang-javascript'
 import { Code } from 'lucide-react';
 import EditorFooter from './EditorFooter';
+import { useRecoilState } from 'recoil';
+import { resultAtom } from '@/atoms/userAtom';
 
 const CodeEditor = () => {
+  const [result, setResult] = useRecoilState(resultAtom);
+
+  const handleSubmit = () => {
+    setResult(true);
+}
+
   return (
     <main className='w-full overflow-auto h-full relative bg-third'>
       <nav>
@@ -23,7 +31,7 @@ const CodeEditor = () => {
         extensions={[javascript()]}
         style={{ fontSize: 16 }}
       />
-      <EditorFooter />
+      <EditorFooter handleSubmit={handleSubmit} />
     </main>
   )
 }

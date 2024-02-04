@@ -4,6 +4,7 @@ import { Toaster, toast } from "sonner";
 import { ConnectWallet, useAddress } from "@thirdweb-dev/react";
 import Footer from "@/components/Footer";
 import { Link, useNavigate } from "react-router-dom";
+import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -99,9 +100,7 @@ const Login = () => {
 
           <h1 className="text-second text-xl font-semibold text-center">or</h1>
 
-          <ConnectWallet
-          className='connectwallet-class'
-          />
+          <WalletMultiButton />
 
           <div className="mt-6 text-center">
             <p className="text-gray-600">

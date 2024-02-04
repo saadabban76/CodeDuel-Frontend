@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import { useNavigate } from "react-router-dom";
-import { useDisconnect, useAddress } from "@thirdweb-dev/react";
+import { useDisconnect, useAddress, useChain } from "@thirdweb-dev/react";
 
 const Navbar = () => {
   const userId = "23423";
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user") || "{}");
-    const address = useAddress();
-    
+  const address = useAddress();
+
   const disconnect = useDisconnect();
 
   const loginHandler = () => {

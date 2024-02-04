@@ -6,25 +6,26 @@ import {
   ThirdwebProvider,
   coinbaseWallet,
   metamaskWallet,
+  phantomWallet,
   walletConnect
 } from "@thirdweb-dev/react";
 import { RecoilRoot } from "recoil";
+import SolanaContext from "./lib/SolanaContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ThirdwebProvider
       supportedWallets={[
-        metamaskWallet({
+        phantomWallet({
           recommended: true
-        }),
-        coinbaseWallet(),
-        walletConnect()
+        })
       ]}
-      activeChain="ethereum"
       clientId="e12bf4273bc073fcae7f55d5163cbda8"
     >
       <RecoilRoot>
-        <App />
+        <SolanaContext>
+          <App />
+        </SolanaContext>
       </RecoilRoot>
     </ThirdwebProvider>
   </React.StrictMode>

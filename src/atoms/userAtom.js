@@ -6,4 +6,9 @@ export const userAtom = atom({
         isLoggedin: false,
         data: null
     },
-  });
+});
+  
+export const resultAtom = atom({
+    key: 'resultAtom',
+    default: false 
+});
